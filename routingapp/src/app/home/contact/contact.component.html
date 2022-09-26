@@ -1,0 +1,6 @@
+<form [formGroup] = "reactive"> 
+    <label>name</label>
+    <input type="text"  formControlName = "name" >
+    <div *ngIf="Name.touched">hi</div>
+    <button (click)="onsub()">hi</button>
+</form>

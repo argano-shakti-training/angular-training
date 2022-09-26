@@ -1,0 +1,83 @@
+<div   class="container-fluid">
+<form [formGroup]="myForm" >
+  <div class="form-group">
+    <label>
+      Name: </label>
+      <input class="form-control" formControlName="name" placeholder="Your name">
+      <!-- <div *ngIf="myForm.get('name')!.touched">no name </div> -->
+      <div *ngIf="Name.touched && Name.errors" class="alert alert-danger">no name </div>
+   
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input  class="form-control"formControlName="lname" placeholder="Your name">
+    <div  *ngIf="lName.touched && lName.errors" class="alert alert-danger">no name </div>
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input  class="form-control" type="number" formControlName="age" (change)="disablegardian()"/>
+    <div *ngIf="Age.errors?.['age_error'] && Age.touched" class="alert alert-danger" >age above 18 is not entered</div>
+  </div>
+
+
+  <label >Gardian name</label>
+  
+
+  <input class="form-control"  formControlName="gardian"  placeholder="Your name">
+  <div *ngIf="Gardian!.touched && Gardian!.errors" class="alert alert-danger">no name </div>
+
+
+
+  <div class="example-list-section" >
+    <label>Languages</label>
+    <input type="checkbox" class="example-margin" formControlName = "lan"> English
+    <input type="checkbox"  formControlName = "tel" > Telugu
+    <input type="checkbox" formControlName = "hin"> Hindi
+   <div *ngIf="myForm.get('lan')?.errors && myForm.get('lan')!.touched"   class="alert alert-danger">chose</div>
+  <!-- <div *ngIf="(myForm.get('lan')!.touched || myForm.get('tel')!.touched )&&( !myForm.get('hin')!.value &&  !myForm.get('tel')!.value && !myForm.get('lan')!.value)" class="alert alert-danger" >chose lan</div> -->
+    <!-- <div *ngIf !=" (myForm.get('eng') && myForm.get('eng')!.touched) &&  (myForm.get('tel') && myForm.get('tel')!.touched) && ( myForm.get('hin') && myForm.get('hin')!.touched)" class="alert alert-danger">choose lang</div> -->
+    <!-- <div *ngIf  ="(!myForm.get('lan')?.pristine && !myForm.get('lan')?.value) || (myForm.get('lan')?.pristine && myForm.get('lan')?.value) ">choose lang</div> -->
+    <div (click)="show(); myForm.markAsPristine">check</div>
+  </div>
+  <div >
+    <label >State</label>
+    <select class="form-control" id="inputState" formControlName="state">
+      <option selected  [ngValue]="null">Choose...</option>
+      <option *ngFor="let item of states"  >{{item}}</option>
+    </select>
+    <div *ngIf="state?.errors?.['required'] && state!.touched" class="alert alert-danger">Field is required</div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>  
+    <input  class="form-control" type="password" formControlName="password" />
+    <div *ngIf ="Password.touched && Password.errors" class="alert alert-danger">password above 8</div>
+    </div>
+    
+  <button (click)="adddetailsarray()" class="btn btn-primary"  style="margin:20px">Add</button>
+  <div formArrayName="addsubject" >
+    
+  <div *ngFor="let addmark of  Markscontrol; let i = index"  [formGroup] = "addmark
+">
+form no. {{i}}
+  <div>
+    street <input formControlName="marks" >
+  </div>
+  <div *ngIf="addmark.get('marks')!.errors && addmark.get('marks')!.touched" class="alert alert-danger">
+    valu eplease
+  </div>
+
+   <div>
+    city <input formControlName="subject">
+  </div>
+  <button  (click)="deletearray(i)"  class="btn btn-danger" >delete</button>
+  </div>
+  
+</div>
+
+  <button type="submit" (click)="submitted()" class="btn btn-primary"  >Send</button>
+</form>
+</div>
+<router-outlet></router-outlet>
+<app-home [myForm]="myForm">
+
+</app-home>

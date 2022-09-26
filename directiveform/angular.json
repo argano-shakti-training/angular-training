@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "routingapp": {
+    "directiveform": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/routingapp",
+            "outputPath": "dist/directiveform",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "routingapp:build:production"
+              "browserTarget": "directiveform:build:production"
             },
             "development": {
-              "browserTarget": "routingapp:build:development"
+              "browserTarget": "directiveform:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "routingapp:build"
+            "browserTarget": "directiveform:build"
           }
         },
         "test": {
@@ -105,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "cd572de6-246a-4bd5-a866-cb63931e7f62"
+    "analytics": "0f2b4e6e-db5b-42a3-85a6-b8ba8c2fcaf1"
   }
 }
